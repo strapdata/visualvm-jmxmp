@@ -31,3 +31,6 @@ Install the JMXMP plugin for VisualVM:
 Create a JMXMP connection:
 
 ![new connection](images/jmxmp-new-connection.png)
+
+Without **jmxmp.username** and **jmxmp.password**, visualVM prompts for a username and password.
+

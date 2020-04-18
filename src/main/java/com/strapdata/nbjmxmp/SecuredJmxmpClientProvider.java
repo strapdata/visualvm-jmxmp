@@ -31,10 +31,16 @@ public class SecuredJmxmpClientProvider extends com.sun.jmx.remote.protocol.jmxm
             env.putAll(environment);
             Security.addProvider(new com.sun.security.sasl.Provider());
             env.put("jmx.remote.profiles", "TLS SASL/PLAIN");
-            env.put("jmx.remote.sasl.callback.handler", new UserPasswordCallbackHandler(
-                    System.getProperty("jmxmp.username","cassandra"),
-                    System.getProperty("jmxmp.password","cassandra")));
-            //System.out.println("JMXMP env="+env);
+
+            String username = System.getProperty("jmxmp.username","cassandra");
+            String password = System.getProperty("jmxmp.password","cassandra");
+            if (environment.containsKey("jmx.remote.credentials")) {
+                String[] creds = (String[]) environment.get("jmx.remote.credentials");
+                username = creds[0];
+                password = creds[1];
+            }
+            env.put("jmx.remote.sasl.callback.handler", new UserPasswordCallbackHandler(username, password));
+            //System.out.println("JMXMP user="+username+" password="+password+" env="+env);
             return new JMXMPConnector(serviceURL, env);
         }
     }
