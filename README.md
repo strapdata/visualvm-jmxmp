@@ -1,6 +1,7 @@
 # VisualVM JMXMP plugin
 
 This VisualVM plugin add support for JMXMP with SASL login/password authentication.
+It allows to monitor Kubernetes pods running a JVM through a single port-forwarded connection.
 
 ## Build
 
@@ -10,7 +11,7 @@ mvn clean package
 
 ## Usage
 
-Start VisualVM with the following sysprops:
+Start VisualVM with the following system properties:
 
 ```bash
 visualvm 
