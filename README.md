@@ -1,7 +1,14 @@
 # VisualVM JMXMP plugin
 
-This VisualVM plugin add support for JMXMP with SASL login/password authentication.
-It allows to monitor Kubernetes pods running a JVM through a single port-forwarded connection.
+[![Build Status](https://travis-ci.org/strapdata/visualvm-jmxmp.svg?branch=master)](https://travis-ci.org/strapdata/visualvm-jmxmp)
+
+This [VisualVM](https://visualvm.github.io/) plugin add support for [JMXMP](https://docs.oracle.com/cd/E19698-01/816-7609/connectors-116/index.html) 
+secured with [SASL](https://docs.oracle.com/cd/E19698-01/816-7609/6mdjrf873/index.html) login/password authentication.
+
+This plugin allows to plug VisualVM to a Kubernetes pods running a JVM through a JMXMP single port-forwarded connection.
+
+**WARNING**: Oracle JMXMP implementation is vulnerable to a deserialization vulnerability (see [ACUNEXTIX Blog](https://www.acunetix.com/blog/web-security-zone/old-java-libraries/)),
+so don't expose it to untrusted networks.
 
 ## Build
 
@@ -26,11 +33,11 @@ visualvm
 
 Install the JMXMP plugin for VisualVM:
 
-![install](images/jmxmp-install.png)
+![install](images/jmxmp-install.png=250x250)
 
 Create a JMXMP connection:
 
-![new connection](images/jmxmp-new-connection.png)
+![new connection](images/jmxmp-new-connection.png=100x100)
 
 Without **jmxmp.username** and **jmxmp.password**, visualVM prompts for a username and password.
 
