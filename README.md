@@ -1,4 +1,4 @@
-# VisualVM JMXMP plugin
+# VisualVM Secured JMXMP plugin
 
 [![Build Status](https://travis-ci.org/strapdata/visualvm-jmxmp.svg?branch=master)](https://travis-ci.org/strapdata/visualvm-jmxmp)
 
@@ -25,19 +25,19 @@ visualvm
     -cp:a /path/to/jmxremote_optional-repackaged-5.1.jar 
     -J-Djavax.net.ssl.trustStore=truststore.jks 
     -J-Djavax.net.ssl.trustStorePassword=changeit 
-    -J-Djavax.net.ssl.trustStoreType=JKS 
-    -J-Dcom.sun.management.jmxremote.registry.ssl=true
+    -J-Djavax.net.ssl.trustStoreType=JKS
     -J-Djmxmp.username="cassandra"
     -J-Djmxmp.password="*********"
 ```
 
 Install the JMXMP plugin for VisualVM:
 
-![install](images/jmxmp-install.png=250x250)
+<img src="images/visualvm-jmxmp-install.png" width="700">
 
 Create a JMXMP connection:
 
-![new connection](images/jmxmp-new-connection.png=100x100)
+<img src="images/visualvm-new-connection.png" width="400">
 
 Without **jmxmp.username** and **jmxmp.password**, visualVM prompts for a username and password.
 
+<img src="images/visualvm-password-prompt.png" width="300">
