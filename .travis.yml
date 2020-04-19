@@ -1,18 +1,20 @@
 language: java
 sudo: false
 jdk:
-  - openjdk8
+- openjdk8
 cache:
   directories:
-    - "$HOME/.cache"
+  - "$HOME/.cache"
 before_install:
-  - export VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+- export VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 script:
-  - mvn clean package
+- mvn clean package
 deploy:
   provider: releases
-  api_key: $GITHUB_OAUTH_TOKEN
-  file: nbjmxmp-${VERSION}.nbm
+  overwrite: true
   skip_cleanup: true
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: ${TRAVIS_BUILD_DIR}/target/nbm/nbjmxmp-${VERSION}.nbm
   on:
+    repo: strapdata/visualvm-jmxmp
     tags: true
