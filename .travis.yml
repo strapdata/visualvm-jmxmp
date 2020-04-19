@@ -1,0 +1,18 @@
+language: java
+sudo: false
+jdk:
+  - openjdk8
+cache:
+  directories:
+    - "$HOME/.cache"
+before_install:
+  - export VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+script:
+  - mvn clean package
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: nbjmxmp-${VERSION}.nbm
+  skip_cleanup: true
+  on:
+    tags: true
